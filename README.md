@@ -164,7 +164,7 @@ function HTML () {
         <Helmet
             titleTemplate="%s | MyAwesomeWebsite.com"
         >
-            <title>My Title</title>
+            <title>Nested Title</title>
         </Helmet>
 
         outputs:
@@ -215,7 +215,7 @@ function HTML () {
     <link rel="apple-touch-icon" href="http://mysite.com/img/apple-touch-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes-"72x72" href="http://mysite.com/img/apple-touch-icon-72x72.png" />
     {locales.map((locale) => {
-        <link rel="alternate" href="http://example.com/{locale}" hrefLang={locale} />
+        <link rel="alternate" href="http://example.com/{locale}" hrefLang={locale} key={locale}/>
     })}
 
     {/* multiple script elements */}
@@ -256,4 +256,4 @@ Please take a moment to review the [guidelines for contributing](CONTRIBUTING.md
 
 MIT
 
-<img align="left" height="200" src="http://static.nfl.com/static/content/public/static/img/logos/nfl-engineering-light.svg" />
+<img align="left" height="200" src="http://static.nfl.com/static/content/public/static/img/logos/ENG_SigilLockup_4C_POS_RGB.png" />

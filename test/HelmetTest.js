@@ -62,7 +62,9 @@ describe("Helmet", () => {
                 ReactDOM.render(
                     <div>
                         <Helmet title={"Main Title"} />
-                        <Helmet title={"Nested Title"} />
+                        <div>
+                            <Helmet title={"Nested Title"} />
+                        </div>
                     </div>,
                     container
                 );
@@ -105,6 +107,48 @@ describe("Helmet", () => {
                 requestAnimationFrame(() => {
                     expect(document.title).to.equal("Fallback");
 
+                    done();
+                });
+            });
+
+            it("uses a titleTemplate and a child <title>", done => {
+                ReactDOM.render(
+                    <Helmet
+                        defaultTitle={"Fallback"}
+                        titleTemplate={
+                            "This is a %s of the titleTemplate feature"
+                        }
+                    >
+                        <title>Test</title>
+                    </Helmet>,
+                    container
+                );
+
+                requestAnimationFrame(() => {
+                    expect(document.title).to.equal(
+                        "This is a Test of the titleTemplate feature"
+                    );
+                    done();
+                });
+            });
+
+            it("uses a titleTemplate and a child <title> via a template?", done => {
+                ReactDOM.render(
+                    <Helmet
+                        defaultTitle={"Fallback"}
+                        titleTemplate={
+                            "This is a %s of the titleTemplate feature"
+                        }
+                    >
+                        <title>{`${"Test"}`}</title>
+                    </Helmet>,
+                    container
+                );
+
+                requestAnimationFrame(() => {
+                    expect(document.title).to.equal(
+                        "This is a Test of the titleTemplate feature"
+                    );
                     done();
                 });
             });
